@@ -10,6 +10,6 @@ EdgeConvertCreateDDL:
 -Test the abstract createDDL class’s ability to get a stored field by its name or its NumFigure (ID#)
 
 EdgeField:
--Test both get and set method in the EdgeField file to see whether it returns what it set
+-Test both get and set method in the EdgeField file to see whether it returns what it was set
 -Test the toString method after all the set and get method has passed
 
