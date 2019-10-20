@@ -7,31 +7,27 @@ public class EdgeFieldTest {
 	EdgeField testObj;
 
 	@Before
-
 	public void setUp() throws Exception {
-		testObj = new EdgeField("123 test");
-
+		testObj = new EdgeField("123|test");
 		runner();
 	}
 
 	public void runner() {
-		/* 
-		 * Following test with Set method are tested with the Get counterparts together
-		 * to test whether the value has been set and whether the value returns
-		 * what it was set previously
-		 * */
-		testGetNumFigure();
-		testGetName();
-		testTableID();
-		testTableBound();
-		testFieldBound();
-		testDisallowNull();
-		testIsPrimaryKey();
-		testDefaultValue();
-		testVarcharValue();
-		testDataType();
-		testGetStrDataType();
-		testToString();
+		// Following test with Set method are tested with the Get counterparts together
+		// to test whether the value has been set and whether the value returns
+		// what it was set previously
+	testGetNumFigure();
+	testGetName();
+	testTableID();
+	testTableBound();
+	testFieldBound();
+	testDisallowNull();
+	testIsPrimaryKey();
+	testDefaultValue();
+	testVarcharValue();
+	testDataType();
+	testGetStrDataType();
+	testToString();
 	}
 
 	@Test
@@ -89,7 +85,8 @@ public class EdgeFieldTest {
 	}
 
 	public void testToString() {
-		System.out.println(testObj.toString());
+		String result = "123|test|5|8|1|1|314|true|false|testV2";
+		assertEquals("To String should return all the values set duing the test",result,testObj.toString());
 	}
 }
 
