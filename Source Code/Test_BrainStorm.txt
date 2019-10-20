@@ -1,0 +1,15 @@
+Test Brainstorm:
+
+EdgeConvertCreateDDL:
+
+-Test the abstract createDDL class stores the correct number of tables
+-Test the abstract createDDL class stores the correct number of tables after initialization call
+-Test the abstract createDDL class stores the correct number of bound fields for tables with 0 or more bound fields
+-Test the abstract createDDL class correctly determines the max amount of bound fields in all tables
+-Test the abstract createDDL class’s ability to get a stored table by its name or its NumFigure (ID#)
+-Test the abstract createDDL class’s ability to get a stored field by its name or its NumFigure (ID#)
+
+EdgeField:
+-Test both get and set method in the EdgeField file to see whether it returns what it set
+-Test the toString method after all the set and get method has passed
+
