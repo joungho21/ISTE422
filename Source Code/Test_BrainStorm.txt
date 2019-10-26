@@ -13,3 +13,13 @@ EdgeField:
 -Test both get and set method in the EdgeField file to see whether it returns what it was set
 -Test the toString method after all the set and get method has passed
 
+EdgeTable
+-Test accesser methods using the information parsed from the initial data
+-Remaining accesser and modifying methods can be tested simultaneously by passing test data and checking for its presence
+-Array modification methods are tested in a similar manner, checking array ordering
+-Test toString 
+
+EdgeConvertFileParserTest
+-Test parseSaveFile initializes edge tables array
+-Test accessing methods access null fields without modification
+-Test openFile executes and modifies edge table array
