@@ -1272,7 +1272,7 @@ public class EdgeConvertGUI {
          if ((ae.getSource() == jmiDTHelpAbout) || (ae.getSource() == jmiDRHelpAbout)) {
             JOptionPane.showMessageDialog(null, "EdgeConvert ERD To DDL Conversion Tool\n" +
                                                 "by Stephen A. Capperell\n" +
-                                                "© 2007-2008");
+                                                "2007-2008");
          }
       } // EdgeMenuListener.actionPerformed()
    } // EdgeMenuListener

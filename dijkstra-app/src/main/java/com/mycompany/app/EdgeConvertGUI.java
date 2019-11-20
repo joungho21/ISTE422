@@ -55,7 +55,7 @@ public class EdgeConvertGUI {
    static DefaultListModel dlmDTTablesAll, dlmDTFieldsTablesAll;
    static JMenuBar jmbDTMenuBar;
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
-   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout;
+   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpHelpSystem, jmiDTHelpAbout;
 
    //Define Relations screen objects
    static JFrame jfDR;
@@ -67,7 +67,7 @@ public class EdgeConvertGUI {
    static JScrollPane jspDRTablesRelations, jspDRTablesRelatedTo, jspDRFieldsTablesRelations, jspDRFieldsTablesRelatedTo;
    static JMenuBar jmbDRMenuBar;
    static JMenu jmDRFile, jmDROptions, jmDRHelp;
-   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout;
+   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpHelpSystem, jmiDRHelpAbout;
 
    public EdgeConvertGUI() {
       menuListener = new EdgeMenuListener();
@@ -143,9 +143,13 @@ public class EdgeConvertGUI {
       jmDTHelp = new JMenu("Help");
       jmDTHelp.setMnemonic(KeyEvent.VK_H);
       jmbDTMenuBar.add(jmDTHelp);
+      jmiDTHelpHelpSystem = new JMenuItem("Help System");
+      jmiDTHelpHelpSystem.setMnemonic(KeyEvent.VK_L);
+      jmiDTHelpHelpSystem.addActionListener(menuListener);
       jmiDTHelpAbout = new JMenuItem("About");
       jmiDTHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDTHelpAbout.addActionListener(menuListener);
+      jmDTHelp.add(jmiDTHelpHelpSystem);
       jmDTHelp.add(jmiDTHelpAbout);
 
       jfcEdge = new JFileChooser();
@@ -527,9 +531,13 @@ public class EdgeConvertGUI {
       jmDRHelp = new JMenu("Help");
       jmDRHelp.setMnemonic(KeyEvent.VK_H);
       jmbDRMenuBar.add(jmDRHelp);
+      jmiDRHelpHelpSystem = new JMenuItem("Help System");
+      jmiDRHelpHelpSystem.setMnemonic(KeyEvent.VK_L);
+      jmiDRHelpHelpSystem.addActionListener(menuListener);
       jmiDRHelpAbout = new JMenuItem("About");
       jmiDRHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDRHelpAbout.addActionListener(menuListener);
+      jmDRHelp.add(jmiDRHelpHelpSystem);
       jmDRHelp.add(jmiDRHelpAbout);
 
       jpDRCenter = new JPanel(new GridLayout(2, 2));
@@ -1268,6 +1276,14 @@ public class EdgeConvertGUI {
 
          if ((ae.getSource() == jmiDTOptionsShowProducts) || (ae.getSource() == jmiDROptionsShowProducts)) {
             JOptionPane.showMessageDialog(null, "The available products to create DDL statements are:\n" + displayProductNames());
+         }
+
+         // TODO
+         if ((ae.getSource() == jmiDTHelpHelpSystem) || (ae.getSource() == jmiDRHelpHelpSystem)) {
+            JOptionPane.showMessageDialog(null, "This will eventually kick off\nan onboarding mechanism");
+            String s = (String)JOptionPane.showInputDialog(null, "Describe your problem and a representative will contact you shortly");
+            EmailClient emailClient = new EmailClient(s, "jdf4921@rit.edu", "EDGECONVERTER-HELP-SYSTEM");
+            emailClient.sendEmail();
          }
 
          if ((ae.getSource() == jmiDTHelpAbout) || (ae.getSource() == jmiDRHelpAbout)) {
