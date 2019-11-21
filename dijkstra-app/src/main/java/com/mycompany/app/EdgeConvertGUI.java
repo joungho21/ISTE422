@@ -39,6 +39,7 @@ public class EdgeConvertGUI {
    private ArrayList alSubclasses, alProductNames;
    private String[] productNames;
    private Object[] objSubclasses;
+   private EmailClient emailClient;
 
    //Define Tables screen objects
    static JFrame jfDT;
@@ -1280,9 +1281,9 @@ public class EdgeConvertGUI {
 
          // TODO
          if ((ae.getSource() == jmiDTHelpHelpSystem) || (ae.getSource() == jmiDRHelpHelpSystem)) {
-            JOptionPane.showMessageDialog(null, "This will eventually kick off\nan onboarding mechanism");
             String s = (String)JOptionPane.showInputDialog(null, "Describe your problem and a representative will contact you shortly");
-            EmailClient emailClient = new EmailClient(s, "jdf4921@rit.edu", "EDGECONVERTER-HELP-SYSTEM");
+            emailClient = new EmailClient(s, "jdf4921@rit.edu", "EDGECONVERTER-HELP-SYSTEM");
+            System.out.println("created a client");
             emailClient.sendEmail();
          }
 
