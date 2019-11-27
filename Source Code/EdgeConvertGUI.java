@@ -6,6 +6,7 @@ import javax.swing.filechooser.FileFilter;
 import java.io.*;
 import java.util.*;
 import java.lang.reflect.*;
+import java.net.*;
 
 public class EdgeConvertGUI {
    
@@ -54,7 +55,7 @@ public class EdgeConvertGUI {
    static DefaultListModel dlmDTTablesAll, dlmDTFieldsTablesAll;
    static JMenuBar jmbDTMenuBar;
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
-   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout;
+   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpNDoc, jmiDTHelpAbout;
    
    //Define Relations screen objects
    static JFrame jfDR;
@@ -66,7 +67,7 @@ public class EdgeConvertGUI {
    static JScrollPane jspDRTablesRelations, jspDRTablesRelatedTo, jspDRFieldsTablesRelations, jspDRFieldsTablesRelatedTo;
    static JMenuBar jmbDRMenuBar;
    static JMenu jmDRFile, jmDROptions, jmDRHelp;
-   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout;
+   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpNDoc, jmiDRHelpAbout;
    
    public EdgeConvertGUI() {
       menuListener = new EdgeMenuListener();
@@ -142,6 +143,9 @@ public class EdgeConvertGUI {
       jmDTHelp = new JMenu("Help");
       jmDTHelp.setMnemonic(KeyEvent.VK_H);
       jmbDTMenuBar.add(jmDTHelp);
+      jmiDTHelpNDoc = new JMenuItem("Documentation");
+      jmiDTHelpNDoc.addActionListener(menuListener);
+      jmDTHelp.add(jmiDTHelpNDoc);
       jmiDTHelpAbout = new JMenuItem("About");
       jmiDTHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDTHelpAbout.addActionListener(menuListener);
@@ -526,6 +530,10 @@ public class EdgeConvertGUI {
       jmDRHelp = new JMenu("Help");
       jmDRHelp.setMnemonic(KeyEvent.VK_H);
       jmbDRMenuBar.add(jmDRHelp);
+      jmiDRHelpNDoc = new JMenuItem("Documentation");
+      jmiDRHelpNDoc.setMnemonic(KeyEvent.VK_D);
+      jmiDRHelpNDoc.addActionListener(menuListener);
+      jmDRHelp.add(jmiDRHelpNDoc);
       jmiDRHelpAbout = new JMenuItem("About");
       jmiDRHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDRHelpAbout.addActionListener(menuListener);
@@ -1268,11 +1276,24 @@ public class EdgeConvertGUI {
          if ((ae.getSource() == jmiDTOptionsShowProducts) || (ae.getSource() == jmiDROptionsShowProducts)) {
             JOptionPane.showMessageDialog(null, "The available products to create DDL statements are:\n" + displayProductNames());
          }
+
+         if ((ae.getSource() == jmiDTHelpNDoc) || (ae.getSource() == jmiDRHelpNDoc)) {
+            if(Desktop.isDesktopSupported()) {
+               try {
+                  URI uri = new URI("https://206.81.7.4/EdgeConvert.pdf");
+                  Desktop.getDesktop().browse(uri);
+               } catch(Exception err) {
+                  System.out.println("Something went wrong");
+               }
+            } else {
+               JOptionPane.showMessageDialog(null, "Please install a compatible internet browser");
+            }
+         }
          
          if ((ae.getSource() == jmiDTHelpAbout) || (ae.getSource() == jmiDRHelpAbout)) {
             JOptionPane.showMessageDialog(null, "EdgeConvert ERD To DDL Conversion Tool\n" +
                                                 "by Stephen A. Capperell\n" +
-                                                "© 2007-2008");
+                                                "ï¿½ 2007-2008");
          }
       } // EdgeMenuListener.actionPerformed()
    } // EdgeMenuListener
