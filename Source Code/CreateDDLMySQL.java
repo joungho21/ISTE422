@@ -6,11 +6,9 @@ import java.io.*;
 import java.util.*;
 
 public class CreateDDLMySQL extends EdgeConvertCreateDDL implements MySQLConfig {
-   protected StringBuffer sb;
    
    public CreateDDLMySQL(EdgeTable[] inputTables, EdgeField[] inputFields) {
       super(inputTables, inputFields, strDataType, createDatabase, endLine, newLine, use, createTable, tab, openGroup, closeGroup, negation, nullIndicator, defaultIndicator, constraint, primaryKeyNameAmendment, primaryKey, delimiter, keyNameAmendment, foreignKeyIndicator, referenceIndicator);
-      sb = new StringBuffer();
    } 
    
    public CreateDDLMySQL() { //default constructor with empty arg list for to allow output dir to be set before there are table and field objects
