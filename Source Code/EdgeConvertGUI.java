@@ -6,7 +6,6 @@ import javax.swing.filechooser.FileFilter;
 import java.io.*;
 import java.util.*;
 import java.lang.reflect.*;
-import CreateDDL.*;
 
 public class EdgeConvertGUI {
    
@@ -980,7 +979,8 @@ public class EdgeConvertGUI {
                continue; //ignore all files that are not .class files
             }
             resultClass = Class.forName(resultFiles[i].getName().substring(0, resultFiles[i].getName().lastIndexOf(".")));
-            if (resultClass.getSuperclass().getName().equals("EdgeConvertCreateDDL") && Arrays.asList(resultClass.getInterfaces()).contains("MySQL")) { //only interested in classes that extend EdgeConvertCreateDDL
+            if(resultClass.isInterface()) { continue; } // can't check interfaces for a superclass
+            if (resultClass.getSuperclass().getName().equals("EdgeConvertCreateDDL")) { //only interested in classes that extend EdgeConvertCreateDDL
                if (parseFile == null && saveFile == null) {
                   conResultClass = resultClass.getConstructor(paramTypesNull);
                   } else {
