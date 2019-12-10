@@ -113,7 +113,11 @@ public abstract class EdgeConvertCreateDDL extends CreateDDL {
                   if (currentField.getFieldBound() != 0) {
                      numForeignKey++;
                   }
-                  sbDDL.append(_delimiter + _newLine); //end of field
+                  if(nativeFieldCount == (nativeFields.length - 1)) {   // last field doesn't need a comma
+                     sbDDL.append(_newLine); // end of field
+                  } else {
+                     sbDDL.append(_delimiter + _newLine); //end of field
+                  }
                }
                if (numPrimaryKey > 0) { //table has primary key(s)
                   sbDDL.append(_constraint + " " + tables[tableCount].getName() + _primaryKeyNameAmendment + " " + _primaryKey + " " + _openGroup);
